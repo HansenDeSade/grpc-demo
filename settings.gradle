@@ -1,0 +1,4 @@
+rootProject.name = 'grpc-demo'
+include 'receiver'
+include 'sender'
+
