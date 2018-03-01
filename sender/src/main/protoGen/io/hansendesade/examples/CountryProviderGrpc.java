@@ -47,7 +47,7 @@ public final class CountryProviderGrpc {
         if ((getGetCountryMethod = CountryProviderGrpc.getGetCountryMethod) == null) {
           CountryProviderGrpc.getGetCountryMethod = getGetCountryMethod = 
               io.grpc.MethodDescriptor.<io.hansendesade.examples.CountryProviderOuterClass.CountryRequest, io.hansendesade.examples.CountryProviderOuterClass.CountryReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "CountryProvider", "getCountry"))
               .setSampledToLocalTracing(true)
@@ -107,7 +107,7 @@ public final class CountryProviderGrpc {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getGetCountryMethod(),
-            asyncUnaryCall(
+            asyncServerStreamingCall(
               new MethodHandlers<
                 io.hansendesade.examples.CountryProviderOuterClass.CountryRequest,
                 io.hansendesade.examples.CountryProviderOuterClass.CountryReply>(
@@ -144,7 +144,7 @@ public final class CountryProviderGrpc {
      */
     public void getCountry(io.hansendesade.examples.CountryProviderOuterClass.CountryRequest request,
         io.grpc.stub.StreamObserver<io.hansendesade.examples.CountryProviderOuterClass.CountryReply> responseObserver) {
-      asyncUnaryCall(
+      asyncServerStreamingCall(
           getChannel().newCall(getGetCountryMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -175,8 +175,9 @@ public final class CountryProviderGrpc {
      * Sends a greeting
      * </pre>
      */
-    public io.hansendesade.examples.CountryProviderOuterClass.CountryReply getCountry(io.hansendesade.examples.CountryProviderOuterClass.CountryRequest request) {
-      return blockingUnaryCall(
+    public java.util.Iterator<io.hansendesade.examples.CountryProviderOuterClass.CountryReply> getCountry(
+        io.hansendesade.examples.CountryProviderOuterClass.CountryRequest request) {
+      return blockingServerStreamingCall(
           getChannel(), getGetCountryMethod(), getCallOptions(), request);
     }
   }
@@ -200,17 +201,6 @@ public final class CountryProviderGrpc {
     protected CountryProviderFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new CountryProviderFutureStub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     * Sends a greeting
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<io.hansendesade.examples.CountryProviderOuterClass.CountryReply> getCountry(
-        io.hansendesade.examples.CountryProviderOuterClass.CountryRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getGetCountryMethod(), getCallOptions()), request);
     }
   }
 

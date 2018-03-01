@@ -983,9 +983,9 @@ public final class CountryProviderOuterClass {
     java.lang.String[] descriptorData = {
       "\n\025countryProvider.proto\"\020\n\016CountryReques" +
       "t\"(\n\014CountryReply\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002 " +
-      "\001(\t2A\n\017CountryProvider\022.\n\ngetCountry\022\017.C" +
-      "ountryRequest\032\r.CountryReply\"\000B\032\n\030io.han" +
-      "sendesade.examplesb\006proto3"
+      "\001(\t2C\n\017CountryProvider\0220\n\ngetCountry\022\017.C" +
+      "ountryRequest\032\r.CountryReply\"\0000\001B\032\n\030io.h" +
+      "ansendesade.examplesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

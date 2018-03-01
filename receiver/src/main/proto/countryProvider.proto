@@ -7,7 +7,7 @@ option java_package = "io.hansendesade.examples";
 // The greeter service definition.
 service CountryProvider {
     // Sends a greeting
-    rpc getCountry ( CountryRequest) returns (  CountryReply) {}
+    rpc getCountry ( CountryRequest) returns (  stream CountryReply) {}
 
 }
 
