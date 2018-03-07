@@ -13,6 +13,7 @@ public class Country {
     @GeneratedValue
     private Long id;
     private String name;
+    private int factor;
 
     public Country() {
 
@@ -42,5 +43,13 @@ public class Country {
     @Override
     public String toString() {
         return "Country{id=" + getId() + ", name='" + getName() + "'}";
+    }
+
+    public int getFactor() {
+        return factor;
+    }
+
+    public void setFactor(int factor) {
+        this.factor = factor;
     }
 }

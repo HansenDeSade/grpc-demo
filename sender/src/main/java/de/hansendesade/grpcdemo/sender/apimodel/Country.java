@@ -7,14 +7,16 @@ public class Country {
 
     private Long id;
     private String name;
+    private int factor;
 
     public Country() {
 
     }
 
-    public Country(final Long id, final String name) {
+    public Country(final Long id, final String name, final int factor) {
         this.id = id;
         this.name = name;
+        this.factor = factor;
     }
 
     public Long getId() {
@@ -36,5 +38,13 @@ public class Country {
     @Override
     public String toString() {
         return "Country{id=" + getId() + ", name='" + getName() + "'}";
+    }
+
+    public int getFactor() {
+        return factor;
+    }
+
+    public void setFactor(int factor) {
+        this.factor = factor;
     }
 }

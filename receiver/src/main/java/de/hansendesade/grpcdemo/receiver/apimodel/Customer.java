@@ -2,21 +2,17 @@ package de.hansendesade.grpcdemo.receiver.apimodel;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Country {
+public class Customer implements Serializable {
 
     private Long id;
     private String name;
-    private int factor;
+    private int businessValue;
 
-    public Country() {
+    public Customer() {
 
-    }
-
-    public Country(final Long id, final String name, final int factor) {
-        this.id = id;
-        this.name = name;
-        this.factor = factor;
     }
 
     public Long getId() {
@@ -37,14 +33,14 @@ public class Country {
 
     @Override
     public String toString() {
-        return "Country{id=" + getId() + ", name='" + getName() + "'}";
+        return "Customer{id=" + getId() + ", name='" + getName() + "', businessValue=" + getBusinessValue() + "}";
     }
 
-    public int getFactor() {
-        return factor;
+    public int getBusinessValue() {
+        return businessValue;
     }
 
-    public void setFactor(int factor) {
-        this.factor = factor;
+    public void setBusinessValue(int businessValue) {
+        this.businessValue = businessValue;
     }
 }

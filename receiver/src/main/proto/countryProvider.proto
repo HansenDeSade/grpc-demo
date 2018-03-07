@@ -1,25 +1,18 @@
 syntax = "proto3";
 
-option java_package = "io.hansendesade.examples";
+option java_package = "io.hansendesade.countryAPI";
 
-
-
-// The greeter service definition.
 service CountryProvider {
-    // Sends a greeting
-    rpc getCountry ( CountryRequest) returns (  stream CountryReply) {}
-
+    rpc calculateValue( CalculationRequest ) returns ( CalculationReply ) {}
 }
 
-
-// The request message containing the user's name.
-message CountryRequest {
+message CalculationRequest {
+    int64 countryId = 1;
+    int32 multiplier = 2;
 }
 
-// The response message containing the greetings
-message CountryReply {
-    int64 id = 1;
-    string name = 2;
+message CalculationReply {
+    int32 calculationResult = 1;
 }
 
 
