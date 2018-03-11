@@ -12,3 +12,9 @@ spring:
     hibernate:
       naming-strategy: org.hibernate.cfg.DefaultNamingStrategy
       ddl-auto: create-drop
+
+country:
+  service:
+    target: localhost:6565
+  rest:
+    target: http://localhost:8081/countries

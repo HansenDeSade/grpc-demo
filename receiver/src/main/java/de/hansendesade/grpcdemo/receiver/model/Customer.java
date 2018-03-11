@@ -1,5 +1,8 @@
 package de.hansendesade.grpcdemo.receiver.model;
 
+import io.hansendesade.countryAPI.CountryProviderGrpc;
+import io.hansendesade.countryAPI.CountryProviderOuterClass;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -62,5 +65,12 @@ public class Customer {
 
     public void setCustomerValue(int customerValue) {
         this.customerValue = customerValue;
+    }
+
+    public CountryProviderOuterClass.CalculationRequest toCalculationRequest() {
+        return CountryProviderOuterClass.CalculationRequest.newBuilder()
+                .setCountryId(getCountryId())
+                .setMultiplier(getCustomerValue())
+                .build();
     }
 }

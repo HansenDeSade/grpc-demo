@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,17 +29,15 @@ public class CustomerController {
     @Autowired
     private CustomerConverter converter;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public HttpEntity<?> getAll(@RequestHeader(value = ReceiverConstants.MODE_HEADER, defaultValue = ReceiverConstants.REST_MODE) String mode) {
-        logger.info("using " + mode + " - mode");
         Iterable<Customer> allCustomer = repository.findAll();
         List<de.hansendesade.grpcdemo.receiver.apimodel.Customer> convertedCustomers = StreamSupport.stream(allCustomer.spliterator(), true).map(c -> converter.convert(c, mode)).collect(Collectors.toList());
         return ResponseEntity.ok(new Customers(convertedCustomers));
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
+    @GetMapping(path = "/{id}")
     public HttpEntity<?> getSingle(@PathVariable("id") long id, @RequestHeader(value = ReceiverConstants.MODE_HEADER, defaultValue = ReceiverConstants.REST_MODE) String mode) {
-        logger.info("using " + mode + " - mode");
         Customer theOne = repository.findOne(id);
         return ResponseEntity.ok(converter.convert(theOne, mode));
     }
