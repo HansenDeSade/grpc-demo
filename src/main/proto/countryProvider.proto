@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_package = "io.hansendesade.countryAPI";
+
+import "google/protobuf/empty.proto";
+
+service CountryProvider {
+    rpc getCountries( google.protobuf.Empty ) returns ( stream CountryReply ) {}
+    rpc getCountry ( GetCountryRequest ) returns ( CountryReply ) {}
+    rpc countLettersOfAllCounties ( google.protobuf.Empty ) returns ( CalculationResponse ) {}
+    rpc unimplementedFuction( google.protobuf.Empty ) returns ( google.protobuf.Empty ) {}
+    rpc letDeadlineExceed ( google.protobuf.Empty ) returns ( google.protobuf.Empty ) {}
+    rpc uncaughtException ( google.protobuf.Empty ) returns ( google.protobuf.Empty ) {}
+}
+
+message CountryReply {
+    int64 id = 1;
+    string name=2;
+}
+
+message GetCountryRequest {
+    int64 id = 1;
+}
+
+message CalculationResponse {
+    int32 numberOfLetters = 1;
+}
+
+
